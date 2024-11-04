@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { FaPlay, FaExclamationTriangle, FaBan } from 'react-icons/fa';
 import Logo from "../assets/Logo-Club.png";
 import Header from '../components/Header';
 import { getFixture } from '../services/fixture.services';
@@ -20,13 +19,13 @@ function FixturePages() {
     const getStatusStyles = (status) => {
         switch (status) {
             case 'Jugando':
-                return { bgColor: 'bg-green-100', textColor: 'text-green-600', icon: <FaPlay /> };
+                return { bgColor: 'bg-green-100', textColor: 'text-green-600' };
             case 'Lesionado':
-                return { bgColor: 'bg-red-100', textColor: 'text-red-600', icon: <FaExclamationTriangle /> };
+                return { bgColor: 'bg-red-100', textColor: 'text-red-600' };
             case 'No juega':
-                return { bgColor: 'bg-gray-100', textColor: 'text-gray-600', icon: <FaBan /> };
+                return { bgColor: 'bg-gray-100', textColor: 'text-gray-600' };
             default:
-                return { bgColor: 'bg-white', textColor: 'text-black', icon: null };
+                return { bgColor: 'bg-white', textColor: 'text-black' };
         }
     };
 
@@ -53,7 +52,7 @@ function FixturePages() {
                             </thead>
                             <tbody>
                                 {Fixture.length < 0 ? Fixture.map((fixture) => {
-                                    const { bgColor, textColor, icon } = getStatusStyles(fixture.estado);
+                                    const { bgColor } = getStatusStyles(fixture.estado);
                                     return (
                                         <tr key={fixture.id} className={`hover:bg-gray-100 ${bgColor}`}>
                                             <td className="py-2 px-3 border-b text-gray-800">{fixture.rival}</td>

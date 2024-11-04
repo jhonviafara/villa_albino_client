@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { FaPlay, FaExclamationTriangle, FaBan } from 'react-icons/fa';
 import Logo from "../assets/Logo-Club.png";
 import Header from '../components/Header';
 import { getCategorias } from '../services/categorias.services';
@@ -20,13 +19,13 @@ function CategoriasPages() {
   const getStatusStyles = (status) => {
     switch (status) {
       case 'Jugando':
-        return { bgColor: 'bg-green-100', textColor: 'text-green-600', icon: <FaPlay /> };
+        return { bgColor: 'bg-green-100', textColor: 'text-green-600' };
       case 'Lesionado':
-        return { bgColor: 'bg-red-100', textColor: 'text-red-600', icon: <FaExclamationTriangle /> };
+        return { bgColor: 'bg-red-100', textColor: 'text-red-600' };
       case 'No juega':
-        return { bgColor: 'bg-gray-100', textColor: 'text-gray-600', icon: <FaBan /> };
+        return { bgColor: 'bg-gray-100', textColor: 'text-gray-600' };
       default:
-        return { bgColor: 'bg-white', textColor: 'text-black', icon: null };
+        return { bgColor: 'bg-white', textColor: 'text-black' };
     }
   };
 

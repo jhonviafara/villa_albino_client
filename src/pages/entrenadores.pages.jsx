@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { FaPlay, FaExclamationTriangle, FaBan } from 'react-icons/fa';
 import Logo from "../assets/Logo-Club.png";
 import Header from '../components/Header';
 import { get } from '../services/utils.services';
@@ -20,13 +19,13 @@ function PlanillaEPages() {
   const getStatusStyles = (categoria) => {
     switch (categoria) {
       case 'Juveniles':
-        return { bgColor: 'bg-green-100', textColor: 'text-green-600', icon: <FaPlay /> };
+        return { bgColor: 'bg-green-100', textColor: 'text-green-600'  };
       case 'Reserva':
-        return { bgColor: 'bg-red-100', textColor: 'text-red-600', icon: <FaExclamationTriangle /> };
+        return { bgColor: 'bg-red-100', textColor: 'text-red-600' };
       case 'Primera':
-        return { bgColor: 'bg-gray-100', textColor: 'text-gray-600', icon: <FaBan /> };
+        return { bgColor: 'bg-gray-100', textColor: 'text-gray-600' };
       default:
-        return { bgColor: 'bg-white', textColor: 'text-black', icon: null };
+        return { bgColor: 'bg-white', textColor: 'text-black'};
     }
   };
 
