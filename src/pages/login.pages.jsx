@@ -16,10 +16,9 @@ function Login() {
 
     const handleLogin = async (event) => {
         event.preventDefault();
-
         try {
             
-            const response = await fetch("http://localhost:3001/login", {
+            const response = await fetch("http://localhost:3001/auth/login", {
                 
                 method: "POST",
                 headers: {
@@ -28,11 +27,8 @@ function Login() {
                 body: JSON.stringify({ nombre, password }),
                 
             });
-
             const data = await response.json();
-            console.log( data)
-
-            if (data.success) {
+            if (data) {
                 navigate('/home');
             } else {
                 setError('Nombre o contraseña incorrectos');
@@ -51,23 +47,26 @@ function Login() {
         }
 
         try {
-            const response = await fetch("http://localhost:3001/register", {
+            const response = await fetch("http://localhost:3001/auth/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ nombre, password, email }),
             });
-            const data = await response.json();
-
-            if (data.success) {
-                navigate('/home');
-            } else {
-                setError('Error en el registro');
+            if (!response.ok) {
+                const errorData = await response.json();
+                setError(errorData.message || 'Error en el registro');
+                return;
             }
+
+            const data = await response.json();
+            setError('Usuario registrado con éxito');
+            console.log(data);
         } catch (err) {
             console.error("Error en el registro", err);
             setError('Hubo un problema con el registro');
+            
         }
     };
 
@@ -78,7 +77,7 @@ function Login() {
                 {isRegistering ? (
                     <form className="max-w-md" onSubmit={handleRegister}>
                         <StyledInput 
-                            placeholder={"Ingrese su nombre"} 
+                            placeholder={"Ingrese su usuario"} 
                             textColor={"text-gray"}
                             value={nombre}
                             type="text"
@@ -111,7 +110,7 @@ function Login() {
                 ) : (
                     <form className="max-w-md" onSubmit={handleLogin}>
                         <StyledInput 
-                            placeholder={"Ingrese su nombre"} 
+                            placeholder={"Ingrese su usuario"} 
                             textColor={"text-gray"}
                             value={nombre}
                             type="text"
