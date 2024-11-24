@@ -13,11 +13,16 @@ function Login() {
     const [error, setError] = useState("");
     const [isRegistering, setIsRegistering] = useState(false);
     const navigate = useNavigate();
-
+    
+setTimeout
     const handleLogin = async (event) => {
         event.preventDefault();
+
         if (!nombre || !password) {
-            return setError(' debe completar todos los campos ');
+             setError(' debe completar todos los campos ');
+            setTimeout(() => setError(""), 5000);
+            return;
+            
           }
         try {  
             const response = await fetch("http://localhost:3001/auth/login", {
@@ -35,93 +40,17 @@ function Login() {
                return navigate('/home');
                 
             } else {
+                
                 setError('Nombre o contraseña incorrectos');
+                setTimeout(() => setError(""), 3000);
+
             }
         } catch (err) {
             console.error("Error en el inicio de sesión", err);
-            setError('Hubo un problema con el inicio de sesión');
+             setError('Hubo un problema con el inicio de sesión');           
+             setTimeout(() => setError(""), 3000); // Borra el mensaje de error automáticamente
         }
     }; 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     const handleRegister = async (event) => {
         event.preventDefault();
         if (password !== confirmPassword) {
@@ -152,7 +81,7 @@ function Login() {
             
         }
     };
-
+    
     return (
         <div className="hero bg-green-700 min-h-screen">
             <div className="hero-content text-center flex flex-col">
