@@ -16,8 +16,10 @@ function Login() {
 
     const handleLogin = async (event) => {
         event.preventDefault();
-        try {
-            
+        if (!nombre || !password) {
+            return setError(' debe completar todos los campos ');
+          }
+        try {  
             const response = await fetch("http://localhost:3001/auth/login", {
                 
                 method: "POST",
@@ -28,8 +30,10 @@ function Login() {
                 
             });
             const data = await response.json();
-            if (data) {
-                navigate('/home');
+            setError('Usuario logueado con éxito');                            
+            if (response.status === 200) {
+               return navigate('/home');
+                
             } else {
                 setError('Nombre o contraseña incorrectos');
             }
@@ -39,6 +43,85 @@ function Login() {
         }
     }; 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const handleRegister = async (event) => {
         event.preventDefault();
         if (password !== confirmPassword) {
@@ -47,7 +130,7 @@ function Login() {
         }
 
         try {
-            const response = await fetch("http://localhost:3001/auth/register", {
+            const response = await fetch("http://localhost:3001/reg/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
