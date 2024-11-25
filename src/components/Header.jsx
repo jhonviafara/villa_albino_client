@@ -24,7 +24,7 @@ const Header = () => {
         <nav className="hidden md:flex ml-4">
           <ul className="flex space-x-4">
             <li><Link to="/home" className="text-white">Inicio</Link></li>
-            <li><Link to="/categorias" className="text-white">Categorias</Link></li>
+            <li><Link to="/planilla-categorias" className="text-white">Categorias</Link></li>
             <li><Link to="/fixture" className="text-white">Fixture</Link></li>
             <li><Link to="/planilla-jugadores" className="text-white">Jugadores</Link></li>
             <li><Link to="/planilla-entrenadores" className="text-white">Entrenadores</Link></li>

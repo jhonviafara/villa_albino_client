@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import Logo from "../assets/Logo-Club.png";
 import Header from '../components/Header';
-import { getCategorias } from '../services/categorias.services';
+import { get } from '../services/utils.services';
+
 
 function CategoriasPages() {
   const [categorias, setCategorias] = useState([]);
 
   async function obtenerCategorias() {
-    const res = await getCategorias();
-    console.log(res);
+    const res = await get("/planilla-categorias");
     setCategorias(res);
   }
 
@@ -16,18 +16,7 @@ function CategoriasPages() {
     obtenerCategorias();
   }, []);
 
-  const getStatusStyles = (status) => {
-    switch (status) {
-      case 'Jugando':
-        return { bgColor: 'bg-green-100', textColor: 'text-green-600' };
-      case 'Lesionado':
-        return { bgColor: 'bg-red-100', textColor: 'text-red-600' };
-      case 'No juega':
-        return { bgColor: 'bg-gray-100', textColor: 'text-gray-600' };
-      default:
-        return { bgColor: 'bg-white', textColor: 'text-black' };
-    }
-  };
+
 
   return (
     <div>
@@ -43,19 +32,19 @@ function CategoriasPages() {
           <table className="min-w-full bg-white border border-gray-200 text-left text-sm"> 
             <thead>
               <tr className="bg-gray-300 text-gray-700">
-                <th className="py-2 px-3 border-b font-semibold">Nombre</th>
-                <th className="py-2 px-3 border-b font-semibold">Cantidad de Jugadores</th>
+              <th className="py-2 px-3 border-b font-semibold">id</th>
+              <th className="py-2 px-3 border-b font-semibold">Nombre</th>
+
               </tr>
             </thead>
             <tbody>
               {categorias.length > 0 ?
               categorias.map((categorias,index) => {
-                const { bgColor } = getStatusStyles(categorias.estado);
 
                 return (
-                  <tr key={index} className={`hover:bg-gray-100 ${bgColor}`}>
-                    <td className="py-2 px-3 border-b text-gray-800">{categorias.nombre}</td> 
-                    <td className="py-2 px-3 border-b text-gray-800">{categorias.cantidad}</td>
+                  <tr key={index} className={`hover:bg-gray-100 `}>
+                    <td className="py-2 px-3 border-b text-gray-800">{categorias.id}</td> 
+                    <td className="py-2 px-3 border-b text-gray-800">{categorias.nombre}</td>
                   </tr>
                 );
               }):

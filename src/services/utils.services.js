@@ -15,9 +15,9 @@ export async function get(route) {
   })
 
   const data = await res.json();
- //console.log(res);
+
  
-  //console.log(data);
+console.log(data);
   
   return data;
 }

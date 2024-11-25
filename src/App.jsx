@@ -15,7 +15,7 @@ function App() {
         <Route path="/planilla-jugadores" element={<PlanillaPages />} />
         <Route path="/planilla-entrenadores" element={<PlanillaEPages />} />
         <Route path="/fixture" element={<FixturePages/>} />
-        <Route path="/categorias" element={<CategoriasPages/>} />
+        <Route path="/planilla-categorias" element={<CategoriasPages/>} />
       </Routes>
     </BrowserRouter>
   )
