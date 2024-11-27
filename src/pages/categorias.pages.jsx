@@ -33,18 +33,19 @@ function CategoriasPages() {
             <thead>
               <tr className="bg-gray-300 text-gray-700">
               <th className="py-2 px-3 border-b font-semibold">id</th>
-              <th className="py-2 px-3 border-b font-semibold">Nombre</th>
+              <th className="py-2 px-3 border-b font-semibold">Nombre de categoria</th>
+              <th className="py-2 px-3 border-b font-semibold">cantidad de jugadores</th>
 
               </tr>
             </thead>
             <tbody>
               {categorias.length > 0 ?
-              categorias.map((categorias,index) => {
-
-                return (
+              categorias.map((categoria,index) => {
+                return  (
                   <tr key={index} className={`hover:bg-gray-100 `}>
-                    <td className="py-2 px-3 border-b text-gray-800">{categorias.id}</td> 
-                    <td className="py-2 px-3 border-b text-gray-800">{categorias.nombre}</td>
+                    <td className="py-2 px-3 border-b text-gray-800">{categoria.categoria_id}</td> 
+                    <td className="py-2 px-3 border-b text-gray-800">{categoria.categoria_nombre}</td>
+                    <td className="py-2 px-3 border-b text-gray-800">{categoria.cantidad_jugadores}</td>
                   </tr>
                 );
               }):

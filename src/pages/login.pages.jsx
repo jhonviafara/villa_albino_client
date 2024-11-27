@@ -20,7 +20,7 @@ setTimeout
 
         if (!nombre || !password) {
              setError(' debe completar todos los campos ');
-            setTimeout(() => setError(""), 5000);
+            setTimeout(() => setError(""), 3000);
             return;
             
           }
