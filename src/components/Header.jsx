@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Asegúrate de importar useHistory
-import LogoImage from './LogoImage';
-
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom"; // Asegúrate de importar useHistory
+import LogoImage from "./LogoImage";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const navegate = useNavigate(); // Inicializamos useHistory
 
   const handleLogout = () => {
-    // Redirige al usuario a la página de inicio de sesión
-    navegate('/'); // Cambia '/login' por la ruta de tu página de inicio de sesión
+    //eliminar le token de sessionstorage
+
+    return navegate("/"), sessionStorage.removeItem("token"); // Redirige al usuario a la página de inicio de sesión
   };
 
   return (
@@ -23,29 +23,65 @@ const Header = () => {
         {/* Menú principal para pantallas medianas y grandes */}
         <nav className="hidden md:flex ml-4">
           <ul className="flex space-x-4">
-            <li><Link to="/home" className="text-white">Inicio</Link></li>
-            <li><Link to="/planilla-categorias" className="text-white">Categorias</Link></li>
-            <li><Link to="/fixture" className="text-white">Fixture</Link></li>
-            <li><Link to="/planilla-jugadores" className="text-white">Jugadores</Link></li>
-            <li><Link to="/planilla-entrenadores" className="text-white">Entrenadores</Link></li>
-
+            <li>
+              <Link to="/home" className="text-white">
+                Inicio
+              </Link>
+            </li>
+            <li>
+              <Link to="/planilla-categorias" className="text-white">
+                Categorias
+              </Link>
+            </li>
+            <li>
+              <Link to="/fixture" className="text-white">
+                Fixture
+              </Link>
+            </li>
+            <li>
+              <Link to="/planilla-jugadores" className="text-white">
+                Jugadores
+              </Link>
+            </li>
+            <li>
+              <Link to="/planilla-entrenadores" className="text-white">
+                Entrenadores
+              </Link>
+            </li>
           </ul>
         </nav>
 
         {/* Botón de menú para pantallas pequeñas */}
         <div className="md:hidden">
           <button onClick={() => setShowMenu(!showMenu)} className="text-white">
-            {!showMenu ? 'Menú' : 'Cerrar'}
+            {!showMenu ? "Menú" : "Cerrar"}
           </button>
         </div>
 
         {/* Menú desplegable para pantallas pequeñas */}
-        <div className={`md:hidden ${showMenu ? 'block' : 'hidden'}`}>
+        <div className={`md:hidden ${showMenu ? "block" : "hidden"}`}>
           <ul className="flex flex-col space-y-2">
-            <li><a href="#categorias" className="text-white">Categorias</a></li>
-            <li><a href="#resultados" className="text-white">Resultados</a></li>
-            <li><a href="#proximos-partidos" className="text-white">Próximos Partidos</a></li>
-            <li><a href="#planilla-jugadores" className="text-white">Listado de Jugadores</a></li> LINK
+            <li>
+              <a href="#categorias" className="text-white">
+                Categorias
+              </a>
+            </li>
+            <li>
+              <a href="#resultados" className="text-white">
+                Resultados
+              </a>
+            </li>
+            <li>
+              <a href="#proximos-partidos" className="text-white">
+                Próximos Partidos
+              </a>
+            </li>
+            <li>
+              <a href="#planilla-jugadores" className="text-white">
+                Listado de Jugadores
+              </a>
+            </li>{" "}
+            LINK
           </ul>
         </div>
 
@@ -65,6 +101,6 @@ const Header = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Header;
