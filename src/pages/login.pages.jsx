@@ -32,15 +32,18 @@ function Login() {
         body: JSON.stringify({ nombre, password }),
       });
       const data = await response.json();
-      if (response.status === 200) {
-        const token = data.token;
-        if (token) {
-          alert("Usuario y token registrados con éxito");
 
+      if (response.status === 200) {
+        //ahora con  respuesta del servidor  y si es estatos 200 destructuro de la respuesta el rol y el token
+        const { token, rol } = data; //para poder trabajar con el rol de usuario
+        if (token) {
+          //guardo el token y el rol el el sessionStorage;
           sessionStorage.setItem("token", token);
+          sessionStorage.setItem("rol", rol);
+          alert("Usuario y token registrados con éxito");
         }
-        console.log(token);
-        return navigate("/home");
+
+        return navigate("/home"), console.log(rol);
       } else {
         setError("Nombre o contraseña incorrectos");
         setTimeout(() => setError(""), 3000);
@@ -52,9 +55,6 @@ function Login() {
     }
   };
 
-  const getToken = () => {
-    return sessionStorage.getItem("token");
-  };
   const handleRegister = async (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {

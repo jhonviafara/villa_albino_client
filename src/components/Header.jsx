@@ -34,6 +34,12 @@ const Header = () => {
               </Link>
             </li>
             <li>
+              <Link to="/cargar-jugador" className="text-white">
+                add jugadores
+              </Link>
+            </li>
+
+            <li>
               <Link to="/fixture" className="text-white">
                 Fixture
               </Link>
