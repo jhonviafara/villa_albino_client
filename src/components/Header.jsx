@@ -8,12 +8,12 @@ const Header = () => {
 
   const handleLogout = () => {
     //eliminar le token de sessionstorage
-
-    return navegate("/"), sessionStorage.removeItem("token"); // Redirige al usuario a la página de inicio de sesión
+    sessionStorage.removeItem("token");
+    return navegate("/"); // Redirige al usuario a la página de inicio de sesión
   };
 
   return (
-    <div className="bg-green-600 p-4 border-white border border-gray-300 shadow-md rounded-md p-4 sticky top-0 z-50">
+    <div className=" w-full  bg-green-600 p-4 border-white border border-gray-300 shadow-md rounded-md p-4 sticky top-0 z-50">
       <div className="flex justify-between items-center">
         <div className="flex items-center">
           <LogoImage />
@@ -21,7 +21,7 @@ const Header = () => {
         </div>
 
         {/* Menú principal para pantallas medianas y grandes */}
-        <nav className="hidden md:flex ml-4">
+        <nav className=" max-w-7xl mx-auto hidden md:flex ml-4 max-w-7xl mx-auto px-4 flex justify-between items-center">
           <ul className="flex space-x-4">
             <li>
               <Link to="/home" className="text-white">

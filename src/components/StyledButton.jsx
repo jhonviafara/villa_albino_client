@@ -13,7 +13,7 @@ function StyledButton({
     remove:
       "bg-red-500 border border-red-700 text-gray-300 hover:bg-red-600 hover:border-red-500 hover:text-white",
     accept:
-      "bg-white border border-slate-300 text-gray-600 hover:bg-green-600 hover:border-slate-500 hover:text-black",
+      "justify-between items-center bg-white border border-slate-300 text-gray-600 hover:bg-green-600 hover:border-slate-500 hover:text-black",
     link: "bg-blue-700 border border-gray-300 text-gray-200 hover:bg-blue-600 hover:text-white hover:underline hover:border-white hover:decoration-white",
     cancel:
       "bg-blue-700 border border-slate-300 text-gray-300 hover:bg-blue-600 hover:border-yellow-500 hover:text-white",
@@ -47,5 +47,3 @@ StyledButton.propTypes = {
   btnType: PropTypes.string.isRequired,
 };
 export default StyledButton;
-
-
