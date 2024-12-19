@@ -33,7 +33,7 @@ function Login() {
       });
       const data = await response.json();
 
-      if (response.status === 200) {
+      if (response.status == 200) {
         //ahora con  respuesta del servidor  y si es estatos 200 destructuro de la respuesta el rol y el token
         const { token, rol } = data; //para poder trabajar con el rol de usuario
         if (token) {

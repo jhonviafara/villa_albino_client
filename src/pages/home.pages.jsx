@@ -11,7 +11,7 @@ function Home() {
             <div className='bg-green-600'>
             <Header />
             <TituloPrincipal />
-            a<UltimosResultados />
+            <UltimosResultados />
             <ProximosPartidos />
             <PieDePagina />
             </div>

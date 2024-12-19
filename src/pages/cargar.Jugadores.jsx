@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import StyledInput from "../components/StyledInput";
 import StyledButton from "../components/StyledButton";
 import { post } from "../services/utils.services";
+import { useNavigate } from "react-router-dom";
 
 const CargarJugador = () => {
   const [nombre, setNombre] = useState("");
@@ -11,14 +12,22 @@ const CargarJugador = () => {
   const [idCategoria, setIdCategoria] = useState("");
   const [idEstado, setIdEstado] = useState("");
   const [contacto, setContacto] = useState("");
+  const navegate = useNavigate();
   const rolsave = sessionStorage.getItem("rol");
   console.log(rolsave);
 
-  if (rolsave != 6323) {
-    return <h1> no tiene permisos para acceder a esta ruta</h1>;
-  }
+
+
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(
+   jugadorData.apellido= "",
+   jugadorData.contacto="",
+   jugadorData.nombre="",
+   jugadorData.edad="",
+   jugadorData.id_categoria="",
+   jugadorData.id_estado=""
+    );
 
     const jugadorData = {
       nombre,
@@ -42,7 +51,7 @@ const CargarJugador = () => {
       } else {
         alert(response.message);
       }
-      console.log(response.message);
+    
     } catch (error) {
       console.error("Error al agregar el jugador:", error);
       alert("Hubo un error al agregar el jugador");

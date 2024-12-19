@@ -11,6 +11,9 @@ const Header = () => {
     sessionStorage.removeItem("token");
     return navegate("/"); // Redirige al usuario a la página de inicio de sesión
   };
+  const rolsave = sessionStorage.getItem("rol")
+
+
 
   return (
     <div className=" w-full  bg-green-600 p-4 border-white border border-gray-300 shadow-md rounded-md p-4 sticky top-0 z-50">
@@ -33,10 +36,15 @@ const Header = () => {
                 Categorias
               </Link>
             </li>
-            <li>
-              <Link to="/cargar-jugador" className="text-white">
+          
+            <li>{ rolsave == "6323" ?(
+              <Link id="cargar" to="/cargar-jugador" className="text-white">
                 add jugadores
-              </Link>
+              </Link>):
+              (
+                null
+              )
+}
             </li>
 
             <li>
