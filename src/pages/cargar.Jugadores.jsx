@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import StyledInput from "../components/StyledInput";
-import StyledButton from "../components/StyledButton";
 import { post } from "../services/utils.services";
-import { useNavigate } from "react-router-dom";
 
 const CargarJugador = () => {
   const [nombre, setNombre] = useState("");
@@ -12,7 +10,6 @@ const CargarJugador = () => {
   const [idCategoria, setIdCategoria] = useState("");
   const [idEstado, setIdEstado] = useState("");
   const [contacto, setContacto] = useState("");
-  const navegate = useNavigate();
   const rolsave = sessionStorage.getItem("rol");
   console.log(rolsave);
 
@@ -20,14 +17,7 @@ const CargarJugador = () => {
 
 
   const handleSubmit = async (e) => {
-    e.preventDefault(
-   jugadorData.apellido= "",
-   jugadorData.contacto="",
-   jugadorData.nombre="",
-   jugadorData.edad="",
-   jugadorData.id_categoria="",
-   jugadorData.id_estado=""
-    );
+   
 
     const jugadorData = {
       nombre,
@@ -40,14 +30,16 @@ const CargarJugador = () => {
 
     try {
       const response = await post("/cargar-jugador", jugadorData); //envio el posta a la ruta y los datos como argumento
+        console.log(response);
+        
       if (response.ok) {
-        alert("Jugador agregado correctamente");
-        setNombre("");
-        setApellido("");
-        setEdad("");
-        setIdCategoria("");
-        setIdEstado("");
-        setContacto("");
+        alert("jugador agregado con exito");
+        setNombre(" ");
+        setApellido(" ");
+        setEdad(" ");
+        setIdCategoria(" ");
+        setIdEstado(" ");
+        setContacto(" ");
       } else {
         alert(response.message);
       }
@@ -127,7 +119,7 @@ const CargarJugador = () => {
         <button
           className="flex justify-center items-center border rounded-md p-3 text-black bg-green-600 hover:bg-green-400 hover:border-slate-500 hover:text-black mx-auto"
           placeholder="guardar jugador"
-          type="submit"
+          type= "submit"
         >
           cargar jugador
         </button>
