@@ -17,7 +17,14 @@ const CargarJugador = () => {
 
 
   const handleSubmit = async (e) => {
-   
+    e.preventDefault(
+      setNombre(" "),
+      setApellido(" "),
+      setEdad(" "),
+      setIdCategoria(" "),
+      setIdEstado(" "),
+      setContacto(" ")
+    );
 
     const jugadorData = {
       nombre,
@@ -32,8 +39,8 @@ const CargarJugador = () => {
       const response = await post("/cargar-jugador", jugadorData); //envio el posta a la ruta y los datos como argumento
         console.log(response);
         
-      if (response.ok) {
-        alert("jugador agregado con exito");
+      if (response) {
+        alert(response.message);
         setNombre(" ");
         setApellido(" ");
         setEdad(" ");
